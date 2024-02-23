@@ -1,13 +1,10 @@
-import java.util.LinkedList;
-import java.util.Queue;
-import java.util.Stack;
 import java.util.Scanner;
 
 public class Main {
 
     public static void main(String[] args) {
-        Queue<String> cola = new LinkedList<>();
-        Stack<String> pila = new Stack<>();
+        Cola cola = new Cola();
+        Pila pila = new Pila();
         Scanner scanner = new Scanner(System.in);
         int opcion;
 
@@ -27,47 +24,39 @@ public class Main {
             switch (opcion) {
                 case 1:
                     System.out.print("Ingrese el dato a agregar con cola: ");
-                    String datoCola = scanner.nextLine();
-                    cola.add(datoCola);
+                    int datoCola = Integer.parseInt(scanner.nextLine());
+                    cola.encolar(datoCola);
                     System.out.println("Dato agregado a la cola: " + datoCola);
                     break;
 
                 case 2:
-                    if (!cola.isEmpty()) {
-                        String datoEliminadoCola = cola.poll();
-                        System.out.println("Dato eliminado de la cola: " + datoEliminadoCola);
-                    } else {
-                        System.out.println("La cola está vacía.");
-                    }
+                    cola.desencolar();
                     break;
 
                 case 3:
                     System.out.print("Ingrese el dato a agregar con pila: ");
-                    String datoPila = scanner.nextLine();
+                    int datoPila = Integer.parseInt(scanner.nextLine());
                     pila.push(datoPila);
                     System.out.println("Dato agregado a la pila: " + datoPila);
                     break;
 
                 case 4:
-                    if (!pila.isEmpty()) {
-                        String datoEliminadoPila = pila.pop();
-                        System.out.println("Dato eliminado de la pila: " + datoEliminadoPila);
-                    } else {
-                        System.out.println("La pila está vacía.");
-                    }
+                    pila.pop();
                     break;
 
                 case 5:
-                    System.out.println("Datos en la cola: " + cola);
-                    System.out.println("Datos en la pila: " + pila);
+                    System.out.println("Datos en la cola: ");
+                    cola.Mostrar();
+                    System.out.println("Datos en la pila: ");
+                    pila.Mostrar();
                     break;
-
+                    
                 case 0:
-                    System.out.println("Saliendo del programa. ¡Hasta luego!");
+                    System.out.println("Cerrando programa...");
                     break;
 
                 default:
-                    System.out.println("Opción no válida. Por favor, ingrese una opción válida.");
+                    System.out.println("Opción no válida.");
                     break;
             }
 
